@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+{% if user.is_authenticated %}
+  <div class="container">
+    <h2> {{ user.username }}! You can post anything</h2>
+    <form action = "" method = "post">
+        {% csrf_token %}
+        <div class="row m-2">
+            {{form }}
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary p-2>
+
+    </form>
+    
+    {% else %}
+    <p>Please login first</p>
+    <a href="{% url 'login' %}">Log In</a>
+  </div>
+{% endif %}
+
+
+{% endblock %}
+
